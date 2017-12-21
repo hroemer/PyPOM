@@ -123,7 +123,7 @@ Regions
 -------
 
 Region objects represent one or more elements of a web page that are repeated
-mutliple times on a page, or shared between multiple web pages. They prevent
+multiple times on a page, or shared between multiple web pages. They prevent
 duplication, and can improve the readability and maintainability of your page
 objects.
 
@@ -178,6 +178,39 @@ write locators for your driver::
           @property
           def name(self):
               return self.find_element(*self._name_locator).text
+
+Nested regions
+~~~~~~~~~~~~~~
+
+Regions can be nested inside other regions (i.e. a menu region with multiple entry
+regions). In the following example a main page has a menu region which includes
+multiple entry regions. As a region requires a page object to be passed you need
+to pass `self.page` when instantiating nested regions.::
+
+  from pypom import Page, Region
+  from selenium.webdriver.common.by import By
+
+  class MainPage(Page):
+
+      @property
+      def menu(self):
+        return Menu(self)
+
+  class Menu(Region):
+      _root_locator = (By.ID, 'menu')
+
+      @property
+      def entries(self):
+          items = self.find_elements(*self._root_locator)
+          return [Entry(self.page, item) for item in items]
+
+  class Entry(Region):
+      _root_locator = (By.CLASS_NAME, 'name')
+
+      @property
+      def name(self):
+          return self.find_element(*self._root_locator).text
+
 
 Shared regions
 ~~~~~~~~~~~~~~
