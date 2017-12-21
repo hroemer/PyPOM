@@ -170,7 +170,7 @@ write locators for your driver::
       @property
       def results(self):
           results = self.find_elements(*self._result_locator)
-          return [self.Result(el) for el in results]
+          return [self.Result(self, el) for el in results]
 
       class Result(Region):
           _name_locator = (By.CLASS_NAME, 'name')
