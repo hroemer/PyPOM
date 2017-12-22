@@ -186,60 +186,16 @@ Regions can be nested inside other regions (i.e. a menu region with multiple ent
 regions). In the following example a main page has a menu region which includes
 multiple entry regions:
 
-.. code-block:: html
-
-  <!DOCTYPE html>
-  <html>
-  <head>
-      <title>Nested Regions</title>
-  </head>
-  <body>
-  <h1>Nested Regions Example</h1>
-  <div id="page">Main Page</div>
-
-  <div id="menu">
-      <ol>
-          <li class="entry">Entry1</li>
-          <li class="entry">Entry2</li>
-          <li class="entry">Entry3</li>
-          <li class="entry">Entry4</li>
-          <li class="entry">Entry5</li>
-      </ol>
-  </div>
-  </body>
-  </html>
+.. literalinclude:: examples/nested_regions.html
+   :language: html
 
 As a region requires a page object to be passed you need
 to pass ``self.page`` when instantiating nested regions:
 
-.. code-block:: python
-  :emphasize-lines: 16-17
-
-  from pypom import Page, Region
-  from selenium.webdriver.common.by import By
-
-  class MainPage(Page):
-
-      @property
-      def menu(self):
-          return Menu(self)
-
-
-  class Menu(Region):
-      _root_locator = (By.ID, 'menu')
-
-      @property
-      def entries(self):
-          items = self.find_elements(*Entry._root_locator)
-          return [Entry(self.page, item) for item in items]
-
-
-  class Entry(Region):
-      _root_locator = (By.CLASS_NAME, 'entry')
-
-      @property
-      def name(self):
-          return self.find_element(*self._root_locator).text
+.. literalinclude:: examples/nested_regions.py
+   :language: python
+   :emphasize-lines: 13-14
+   :lines: 5-26
 
 
 Shared regions
