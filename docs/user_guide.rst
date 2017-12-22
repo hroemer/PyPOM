@@ -184,8 +184,7 @@ Nested regions
 
 Regions can be nested inside other regions (i.e. a menu region with multiple entry
 regions). In the following example a main page has a menu region which includes
-multiple entry regions. As a region requires a page object to be passed you need
-to pass ``self.page`` when instantiating nested regions
+multiple entry regions:
 
 .. code-block:: html
 
@@ -210,9 +209,11 @@ to pass ``self.page`` when instantiating nested regions
   </body>
   </html>
 
+As a region requires a page object to be passed you need
+to pass ``self.page`` when instantiating nested regions:
 
 .. code-block:: python
-  :emphasize-lines: 14,16
+  :emphasize-lines: 16-17
 
   from pypom import Page, Region
   from selenium.webdriver.common.by import By
