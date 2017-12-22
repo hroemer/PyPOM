@@ -1,16 +1,22 @@
-from pypom import Page, Region
+from pypom import Region, Page
 from selenium.webdriver.common.by import By
 
 
 class MainPage(Page):
 
     @property
-    def menu(self):
-        return Menu(self)
+    def menu1(self):
+        root = self.find_element(By.ID, "menu1")
+        return Menu(self, root=root)
+
+    @property
+    def menu2(self):
+        root = self.find_element(By.ID, "menu2")
+        return Menu(self, root=root)
 
 
 class Menu(Region):
-    _root_locator = (By.ID, 'menu')
+    _root_locator = (By.CLASS_NAME, 'menu')
 
     @property
     def entries(self):

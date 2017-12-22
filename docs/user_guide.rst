@@ -159,32 +159,23 @@ The following example uses Selenium_ to locate all results on a page and return
 a list of ``Results`` regions. This can be used to determine the number of
 results, and each result can be accessed from this list for further state or
 interactions. Refer to `locating elements`_ for more information on how to
-write locators for your driver::
+write locators for your driver:
 
-  from pypom import Page, Region
-  from selenium.webdriver.common.by import By
+.. literalinclude:: examples/repeated_regions.html
+   :language: html
+   :emphasize-lines: 6-11
 
-  class Results(Page):
-      _result_locator = (By.CLASS_NAME, 'result')
-
-      @property
-      def results(self):
-          results = self.find_elements(*self._result_locator)
-          return [self.Result(self, el) for el in results]
-
-      class Result(Region):
-          _name_locator = (By.CLASS_NAME, 'name')
-
-          @property
-          def name(self):
-              return self.find_element(*self._name_locator).text
+.. literalinclude:: examples/repeated_regions.py
+   :language: python
+   :emphasize-lines: 7-8
+   :lines: 5-26
 
 Nested regions
 ~~~~~~~~~~~~~~
 
 Regions can be nested inside other regions (i.e. a menu region with multiple entry
-regions). In the following example a main page has a menu region which includes
-multiple entry regions:
+regions). In the following example a main page contains two menu regions which
+includes multiple entry regions:
 
 .. literalinclude:: examples/nested_regions.html
    :language: html
@@ -194,7 +185,7 @@ to pass ``self.page`` when instantiating nested regions:
 
 .. literalinclude:: examples/nested_regions.py
    :language: python
-   :emphasize-lines: 13-14
+   :emphasize-lines: 20-20
    :lines: 5-26
 
 
