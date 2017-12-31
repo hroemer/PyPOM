@@ -168,7 +168,7 @@ write locators for your driver:
 .. literalinclude:: examples/repeated_regions.py
    :language: python
    :emphasize-lines: 7-8
-   :lines: 5-26
+   :lines: 5-19
 
 Nested regions
 ~~~~~~~~~~~~~~
