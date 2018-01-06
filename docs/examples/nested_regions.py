@@ -16,7 +16,6 @@ class MainPage(Page):
 
 
 class Menu(Region):
-    _root_locator = (By.CLASS_NAME, 'menu')
 
     @property
     def entries(self):
@@ -29,4 +28,4 @@ class Entry(Region):
 
     @property
     def name(self):
-        return self.find_element(*self._root_locator).text
+        return self.root.text

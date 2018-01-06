@@ -3,7 +3,6 @@ from selenium.webdriver.common.by import By
 
 
 class Results(Page):
-
     _result_locator = (By.CLASS_NAME, 'result')
 
     @property
@@ -16,4 +15,4 @@ class Results(Page):
 
         @property
         def name(self):
-            return self.find_element(*self._name_locator).text
+            return self.root.text

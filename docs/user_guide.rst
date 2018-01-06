@@ -167,15 +167,15 @@ write locators for your driver:
 
 .. literalinclude:: examples/repeated_regions.py
    :language: python
-   :emphasize-lines: 7-8
-   :lines: 5-19
+   :emphasize-lines: 6-7
+   :lines: 5-18
 
 Nested regions
 ~~~~~~~~~~~~~~
 
 Regions can be nested inside other regions (i.e. a menu region with multiple entry
 regions). In the following example a main page contains two menu regions which
-includes multiple entry regions:
+includes multiple repeated entry regions:
 
 .. literalinclude:: examples/nested_regions.html
    :language: html
@@ -185,7 +185,7 @@ to pass ``self.page`` when instantiating nested regions:
 
 .. literalinclude:: examples/nested_regions.py
    :language: python
-   :emphasize-lines: 20-20
+   :emphasize-lines: 18-19
    :lines: 5-26
 
 
