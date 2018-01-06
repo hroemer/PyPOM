@@ -156,7 +156,7 @@ same characteristics, such as a list of search results. By creating a page
 region, you can interact with any of these items in a common way:
 
 The following example uses Selenium_ to locate all results on a page and return
-a list of ``Results`` regions. This can be used to determine the number of
+a list of ``Result`` regions. This can be used to determine the number of
 results, and each result can be accessed from this list for further state or
 interactions. Refer to `locating elements`_ for more information on how to
 write locators for your driver:
@@ -167,8 +167,8 @@ write locators for your driver:
 
 .. literalinclude:: examples/repeated_regions.py
    :language: python
-   :emphasize-lines: 6-7
-   :lines: 5-18
+   :emphasize-lines: 6-8
+   :lines: 5-19
 
 Nested regions
 ~~~~~~~~~~~~~~
