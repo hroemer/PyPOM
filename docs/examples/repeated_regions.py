@@ -7,11 +7,12 @@ class Results(Page):
 
     @property
     def results(self):
-        results = self.find_elements(*self.Result._name_locator)
-        return [self.Result(self, el) for el in results]
+        results_element = self.find_element(*self._result_locator)
+        items = results_element.find_elements(*self.Result._root_locator)
+        return [self.Result(self, el) for el in items]
 
     class Result(Region):
-        _name_locator = (By.CLASS_NAME, 'name')
+        _root_locator = (By.CLASS_NAME, 'item')
 
         @property
         def name(self):
