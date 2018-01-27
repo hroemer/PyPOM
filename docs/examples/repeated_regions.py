@@ -7,13 +7,16 @@ class Results(Page):
 
     @property
     def results(self):
-        results_element = self.find_element(*self._result_locator)
-        items = results_element.find_elements(*self.Result._root_locator)
-        return [self.Result(self, el) for el in items]
+        return [self.Result(self, el) for el in self.find_elements(*self._result_locator)]
 
     class Result(Region):
-        _root_locator = (By.CLASS_NAME, 'item')
+        _name_locator = (By.CLASS_NAME, 'name')
+        _detail_locator = (By.TAG_NAME, 'a')
 
         @property
         def name(self):
-            return self.root.text
+            return self.find_element(*self._name_locator).text
+
+        @property
+        def detail_link(self):
+            return self.find_element(*self._detail_locator).get_property("href")

@@ -19,12 +19,11 @@ class Menu(Region):
 
     @property
     def entries(self):
-        items = self.find_elements(*Entry._root_locator)
-        return [Entry(self.page, item) for item in items]
+        return [Entry(self.page, item) for item in self.find_elements(*Entry.entry_locator)]
 
 
 class Entry(Region):
-    _root_locator = (By.CLASS_NAME, 'entry')
+    entry_locator = (By.CLASS_NAME, 'entry')
 
     @property
     def name(self):
